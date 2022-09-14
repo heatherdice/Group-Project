@@ -1,0 +1,1 @@
+Create a Kanban board that a user can add tasks to and update. A Kanban board is a project management tool designed to help visualize workflow for an individual and/or team.
