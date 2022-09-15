@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
+import Board from './components/Board';
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="container">
       <BrowserRouter>
         <Routes>
-          <Route element={ <Home /> } path="/" />
+          <Route element={ <Board /> } path="/" />
         </Routes>
       </BrowserRouter>
     </div>

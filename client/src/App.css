@@ -1,0 +1,22 @@
+/* CSS for styling the Kanban Board */
+.table {
+    border: 2px solid black;
+    height:100vh;
+    table-layout:fixed;
+}
+.column-wall {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+.column-divider {
+    border-top: 2px solid black;
+}
+/* End CSS for styling the Kanban Board */
+
+/* Colors for the different Tasks */
+.Yellow{background-color: yellow;}
+.Green{background-color: green;}
+.Blue{background-color: blue;}
+.Red{background-color: red;}
+.Orange{background-color: orange;}
+.Purple{background-color: purple;}
