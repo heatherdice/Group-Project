@@ -10,12 +10,12 @@ const CreateTask = () => {
               name="taskColor"
               type="text"
             >
-              <option value="yellow">Yellow</option>
-              <option value="red">Red</option>
-              <option value="orange">Orange</option>
-              <option value="blue">Blue</option>
-              <option value="purple">Purple</option>
-              <option value="green">Green</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Red">Red</option>
+              <option value="Orange">Orange</option>
+              <option value="Blue">Blue</option>
+              <option value="Purple">Purple</option>
+              <option value="Green">Green</option>
             </select>
 
             <textarea name="task" rows="4" cols="50" placeholder="Add description..."></textarea>
