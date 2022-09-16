@@ -29,11 +29,11 @@ const Board = () => {
     return (
         <div>
             <div>
-                <div className="flex">
+                <div className="flex vertical-align">
                     <h2>Group 5 Board</h2>
                     {members.map((member, index) => {
                         return <div className="member" key={index}>
-                            <img className="member-img" src="https://pluspng.com/img-png/png-user-icon-male-user-icon-512.png" alt="user-image"></img>
+                            <i className="bi bi-person-circle"></i>
                         </div>
                     })}
                     <Link className = "no-underline" to={`/create/`}><button className="member-add">+</button></Link> 

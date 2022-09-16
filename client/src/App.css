@@ -12,8 +12,8 @@
     border-top: 2px solid black;
 }
 /* Used to size the images for Members above the board */
-.member-img {
-    height: 40px;
+.bi-person-circle {
+    font-size:40px;
     padding-left: 10px
 }
 /* Used to modify the Add Member button to match Member-Img */
@@ -27,6 +27,10 @@
 /* Easily add just Display:Flex to a component */
 .flex{
     display:flex;
+}
+/* Used to get "Group 5 Board", the User icons, and the add User button inline */
+.vertical-align{
+    align-items: center;
 }
 
 /* End CSS for styling the Kanban Board */
