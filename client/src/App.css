@@ -11,6 +11,24 @@
 .column-divider {
     border-top: 2px solid black;
 }
+/* Used to size the images for Members above the board */
+.member-img {
+    height: 40px;
+    padding-left: 10px
+}
+/* Used to modify the Add Member button to match Member-Img */
+.member-add {
+    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    background-color: white;
+}
+/* Easily add just Display:Flex to a component */
+.flex{
+    display:flex;
+}
+
 /* End CSS for styling the Kanban Board */
 
 /* Colors for the different Tasks */
