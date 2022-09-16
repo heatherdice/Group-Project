@@ -28,7 +28,7 @@
 .flex{
     display:flex;
 }
-
+/* Used to get "Group 5 Board", the User icons, and the add User button inline */
 .vertical-align{
     align-items: center;
 }
