@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const TaskSchema = new mongoose.Schema(
-  {
+const TaskSchema = new mongoose.Schema({
     name: {
       type: String,
       required: [true, "Name is required"],
@@ -46,11 +45,26 @@ const TaskSchema = new mongoose.Schema(
       maxLength: [255, "Description must be at most 255 characters long"],
     },
 
+    assignedRef: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Member'
+    },
+
     dueDate: {
       type: Date,
     },
   },
-  { timestamps: true }
-);
+    { timestamps: true }
+  );
 
-module.exports = mongoose.model("Task", TaskSchema);
+  TaskSchema.pre('find', function(next) {
+    this.populate('assignedRef');
+    next();
+  });
+
+  TaskSchema.pre('findOne', function(next) {
+    this.populate('assignedRef');
+    next();
+  });
+
+module.exports = mongoose.model('Task',TaskSchema);
