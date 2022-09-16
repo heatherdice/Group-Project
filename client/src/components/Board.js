@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Board = () => {
     const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
@@ -19,7 +20,7 @@ const Board = () => {
             <table className="table table-borderless">
                 <thead>
                     <tr>
-                        <th className="column-wall">To-Do <button value="To-Do">+</button></th>
+                        <th className="column-wall">To-Do <button value="To-Do"><Link to={`/create/`}>+</Link> </button></th>
                         <th className="column-wall">Do Today <button value="Do Today">+</button></th>
                         <th className="column-wall">In Progress <button value="In-Progress">+</button></th>
                         <th className="column-wall">Done <button value="Done">+</button></th>
