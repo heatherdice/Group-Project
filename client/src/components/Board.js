@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Board = () => {
     const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
-    const [members, setMembers] = useState([]) //Creating State to hold the list of all members from the server.
 
     // UseEffect call to get all of the Tasks from the Server.
     useEffect(() => {
@@ -15,29 +14,10 @@ const Board = () => {
         })
         .catch(err => console.log(err))
     }, []);
-
-    // UseEffect call to get all of the Members from the Server.
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/members")
-        .then(res => {
-            setMembers(res.data)
-            console.log(res.data)
-        })
-        .catch(err => console.log(err))
-    }, []);
     
     return (
         <div className="container">
             <div>
-                <div className="flex vertical-align">
-                    <h2>Group 5 Board</h2>
-                    {members.map((member, index) => {
-                        return <div className="member" key={index}>
-                            <Link className='no-underline' to={`/member/${member._id}`}><i className="bi bi-person-circle"></i></Link>
-                        </div>
-                    })}
-                    <Link className = "no-underline" to={`/create/`}><button className="member-add">+</button></Link> 
-                </div>
                 <table className="table">
                     <thead>
                         <tr>

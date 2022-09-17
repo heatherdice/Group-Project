@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Board from './components/Board';
+import Home from './views/Home';
 import CreateTask from './components/CreateTask';
 import NavBar from './components/NavBar';
 import ViewMember from './components/ViewMember';
@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
       <NavBar />
         <Routes>
-          <Route element={ <Board /> } path="/" />
+          <Route element={ <Home /> } path="/" />
           <Route element={ <CreateTask /> } path= "/create" />
           <Route element={ <ViewMember /> } path= "/member/:id" />
           <Route element={ <UpdateTask /> } path= "/updatetask/:id" />
