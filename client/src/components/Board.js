@@ -33,7 +33,7 @@ const Board = () => {
                     <h2>Group 5 Board</h2>
                     {members.map((member, index) => {
                         return <div className="member" key={index}>
-                            <i className="bi bi-person-circle"></i>
+                            <Link className='no-underline' to={`/member/${member._id}`}><i className="bi bi-person-circle"></i></Link>
                         </div>
                     })}
                     <Link className = "no-underline" to={`/create/`}><button className="member-add">+</button></Link> 
@@ -52,27 +52,31 @@ const Board = () => {
                             {/* To Do - Expedited Service */}
                             <td className="column-wall">(Expedited Service)
                                 {tasks.filter(task => task.state === "To-Do" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
                             {/* Do Today - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Do Today" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
 
                             {/* In Progress - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "In-Progress" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
 
                             {/* Done - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Done" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
                         </tr>
@@ -81,28 +85,32 @@ const Board = () => {
                             {/* To Do - Regular Service */}
                             <td className="column-wall">(Regular Service)
                                 {tasks.filter(task => task.state === "To-Do" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
 
                             {/* Do Today - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Do Today" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
 
                             {/* In Progress - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "In-Progress" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
 
                             {/* Done - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Done" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}><div className={task.color}>{task.name}</div></div>
+                                    return <div className="task" key={index}>
+                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
                                 })}
                             </td>
                         </tr>
