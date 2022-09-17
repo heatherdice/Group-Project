@@ -27,7 +27,7 @@ const Board = () => {
     }, []);
     
     return (
-        <div>
+        <div className="container">
             <div>
                 <div className="flex vertical-align">
                     <h2>Group 5 Board</h2>
@@ -38,13 +38,13 @@ const Board = () => {
                     })}
                     <Link className = "no-underline" to={`/create/`}><button className="member-add">+</button></Link> 
                 </div>
-                <table className="table table-borderless">
+                <table className="table">
                     <thead>
                         <tr>
-                            <th className="column-wall">To-Do <Link to={`/create/`}><button value="To-Do">+</button></Link> </th>
-                            <th className="column-wall">Do Today <Link to={`/create/`}><button value="Do Today">+</button></Link></th>
-                            <th className="column-wall">In Progress <Link to={`/create/`}><button value="In-Progress">+</button></Link></th>
-                            <th className="column-wall">Done <Link to={`/create/`}><button value="Done">+</button></Link></th>
+                            <th className="column-wall">To-Do <Link to={`/create/`}><button className="addTask" value="To-Do">+</button></Link></th>
+                            <th className="column-wall">Do Today <Link to={`/create/`}><button className="addTask" value="Do Today">+</button></Link></th>
+                            <th className="column-wall">In Progress <Link to={`/create/`}><button className="addTask" value="In-Progress">+</button></Link></th>
+                            <th className="column-wall">Done <Link to={`/create/`}><button className="addTask" value="Done">+</button></Link></th>
                         </tr>
                     </thead>
                     <tbody>

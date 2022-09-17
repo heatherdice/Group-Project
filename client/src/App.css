@@ -1,16 +1,40 @@
 /* CSS for styling the Kanban Board */
-.table {
-    border: 2px solid black;
-    height:100vh;
-    table-layout:fixed;
+.container {
+    max-width: 100%;
+    max-height: auto;
 }
-.column-wall {
+table {
+    height: 100vh;
+    table-layout: fixed;
+    border-spacing: 0;
+    border-radius: 10px;
+    border-collapse: separate;
+    background-color: #fdfcf7;
+    box-shadow: 7px 10px #dad9d4;
+}
+table, tr, th, td {
+    background: #fdfcf7;
+    border: 1px solid black;
+}
+table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+/* .column-wall {
     border-left: 2px solid black;
     border-right: 2px solid black;
-}
-.column-divider {
+} */
+/* .column-divider {
     border-top: 2px solid black;
-}
+} */
 /* Used to size the images for Members above the board */
 .bi-person-circle {
     font-size:40px;
@@ -32,13 +56,20 @@
 .vertical-align{
     align-items: center;
 }
+/* Task button styling */
+.addTask {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: #e6e3dc;
+    text-align: center;
+}
 
 /* End CSS for styling the Kanban Board */
 
 /* Colors for the different Tasks */
-.Yellow{background-color: yellow;}
-.Green{background-color: green;}
-.Blue{background-color: blue;}
-.Red{background-color: red;}
-.Orange{background-color: orange;}
-.Purple{background-color: purple;}
+.Red{background-color: #ff595e;}
+.Yellow{background-color: #ffca3a;}
+.Green{background-color: #8ac926;}
+.Blue{background-color: #1982c4;}
+.Purple{background-color: #6a4c93;}
