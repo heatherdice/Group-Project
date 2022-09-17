@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const Form = (props) => {
-    const {handleSubmit, buttonText} = props;
+    const {handleSubmit, buttonText, oldTask} = props;
 
-    //state for task model
-    const [task, setTask] = useState({
+    //state for task model; will be filled on or blank if an old task exists
+    const [task, setTask] = useState(oldTask || {
         name:'',
         color:'',
         description:'',
@@ -31,8 +31,6 @@ const Form = (props) => {
     if (parseInt(day) < 10) {
       day = "0" + day;
     }
-
-    console.log(`${year}-${month}-${day}`);
 
     return `${year}-${month}-${day}`;
   };
