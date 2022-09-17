@@ -75,6 +75,11 @@ table tr:last-child td:last-child {
     padding-bottom: 5px;
 }
 
+.task-card{
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /* End CSS for styling the Kanban Board */
 
 /* Colors for the different Tasks */
