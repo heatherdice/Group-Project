@@ -56,6 +56,11 @@ table tr:last-child td:last-child {
 .vertical-align{
     align-items: center;
 }
+/* Used so that the Tasks don't look like Hyperlinks */
+.no-underline{
+    text-decoration: none;
+    color: black
+}
 /* Task button styling */
 .addTask {
     border-radius: 100%;
@@ -63,6 +68,11 @@ table tr:last-child td:last-child {
     height: 30px;
     background-color: #e6e3dc;
     text-align: center;
+}
+
+.task {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 /* End CSS for styling the Kanban Board */
@@ -73,3 +83,4 @@ table tr:last-child td:last-child {
 .Green{background-color: #8ac926;}
 .Blue{background-color: #1982c4;}
 .Purple{background-color: #6a4c93;}
+.Orange{background-color: orange}

@@ -62,7 +62,6 @@ const ViewMember = () => {
                 name="Members"
                 value={members.name}
               >
-                {members.name}
               </input>
               <i
                 onClick={editMemberClick}
