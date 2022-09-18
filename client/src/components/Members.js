@@ -4,7 +4,7 @@ import axios from 'axios';
 const Members = () => {
 
   // Creating State to hold the list of all members from the server.
-  const [ members, setMembers ] = useState([])
+  const [ members, setMembers ] = useState([]);
   const [ singleMember, setSingleMember ] = useState({});
 
   // Create State to hold values for create form
