@@ -35,11 +35,13 @@ table tr:last-child td:last-child {
 /* .column-divider {
     border-top: 2px solid black;
 } */
+
 /* Used to size the images for Members above the board */
 .bi-person-circle {
     font-size:40px;
     padding-left: 10px
 }
+
 /* Used to modify the Add Member button to match Member-Img */
 .member-add {
     border-radius: 25px;
@@ -48,6 +50,18 @@ table tr:last-child td:last-child {
     margin-left: 10px;
     background-color: white;
 }
+
+/* New styling for the Member images and add button above the board */
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    margin-right: 5px;
+    border-radius: 15px;
+    font-size: 8px;
+    text-align: center;
+}
+
 /* Easily add just Display:Flex to a component */
 .flex{
     display:flex;

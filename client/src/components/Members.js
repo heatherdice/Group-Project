@@ -9,7 +9,6 @@ const Members = () => {
 
   // Create State to hold values for create form
   const [ name, setName ] = useState("");
-  const [ errors, setErrors ] = useState([]);
 
   // Specific state to trigger the useEffect on
   const [ refreshRequired, setRefreshRequired ] = useState(false);
@@ -18,8 +17,8 @@ const Members = () => {
   useEffect(() => {
     axios.get("http://localhost:8000/api/members")
     .then(res => {
-      setMembers(res.data)
-      console.log(res.data)
+      setMembers(res.data);
+      console.log(res.data);
       setRefreshRequired(false);
     })
     .catch(err => console.log(err))
@@ -63,19 +62,17 @@ const Members = () => {
         console.log(res.data);
         setSingleMember({});
         setName("");
-        setErrors([]);
         setRefreshRequired(true);
       })
       .catch((err) => {
         console.log(err.response.data.errors);
-        setErrors(err.response.data.errors);
       });
   };
 
-  // Clearing the form state when the modal is called
+  // Clearing the form state when the create modal is called
   const cleanUpHandler = (e) => {
+    setSingleMember({});
     setName("");
-    setErrors([]);
   };
 
   // Submit handler for the create member modal
@@ -86,12 +83,10 @@ const Members = () => {
       .then((res) => {
         console.log(res.data);
         setName("");
-        setErrors([]);
         setRefreshRequired(true);
       })
       .catch((err) => {
         console.log(err.response.data.errors);
-        setErrors(err.response.data.errors);
       });
   }
 
@@ -111,7 +106,7 @@ const Members = () => {
                 <button
                   key={ index }
                   type="button"
-                  className="btn btn-link"
+                  className="btn btn-outline-dark btn-circle"
                   data-bs-toggle="modal"
                   data-bs-target="#viewMemberModal"
                   onClick={ (e) => viewMemberHandler(`${oneMember._id}`) }
@@ -123,12 +118,12 @@ const Members = () => {
             {/* Button trigger create modal */}
             <button
               type="button"
-              className="btn btn-link"
+              className="btn btn-outline-success btn-circle"
               data-bs-toggle="modal"
               data-bs-target="#createMemberModal"
               onClick={ cleanUpHandler }
             >
-              <i className="bi bi-plus-circle-fill"></i>
+              +
             </button>
           </div>
         </div>
