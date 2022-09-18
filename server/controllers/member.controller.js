@@ -21,7 +21,7 @@ module.exports = {
   },
 
   editMember: (req, res) => {
-    Member.findByIdAndUpdate({ _id: req.params.id }, req.body, {
+    Member.findOneAndUpdate({ _id: req.params.id }, req.body, {
       new: true,
       runValidators: true,
       context: "query",
