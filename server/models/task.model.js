@@ -35,7 +35,7 @@ const TaskSchema = new mongoose.Schema({
       type: String,
       required: [true, "State is required"],
       enum: {
-        values: ["To-Do", "Do Today", "In-Progress", "Done"],
+        values: ["To-Do", "Do Today", "In-Progress", "Done", "Inactive"],
         message: "Select an available option",
       },
     },
