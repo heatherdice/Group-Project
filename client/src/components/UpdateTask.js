@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Form from './Form';
+import DeleteButton from './DeleteButton';
 
 const UpdateTask = () => {
     const { id } = useParams();
@@ -43,6 +44,7 @@ const UpdateTask = () => {
     <div>
         {/* Sending the old task from the useEffect call to the form */}
         {oldTask && <Form handleSubmit={updateHandler} buttonText={'Save & Update'} oldTask={oldTask} />}
+        <DeleteButton id={id} handleDelete={() => navigate('/') } />
         </div>
   )
 }

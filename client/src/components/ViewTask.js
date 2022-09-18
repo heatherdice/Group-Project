@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import DeleteButton from "./DeleteButton";
 
 const ViewTask = () => {
     const [task, setTask] = useState({});
@@ -17,6 +18,8 @@ const ViewTask = () => {
             console.log(err);
         })
     }, [])
+
+
 
     //convert date to usable format
   const convertDate = (dataDate) => {
@@ -45,6 +48,7 @@ const ViewTask = () => {
         <p> State: {task.state} </p>
         <p> Due Date: {convertDate(task.dueDate)} </p>
         <Link to={`/updatetask/${task._id}`}><button>Update</button></Link>
+        <DeleteButton id={task._id} handleDelete={() => navigate('/') } />
     </div>
   )
 }
