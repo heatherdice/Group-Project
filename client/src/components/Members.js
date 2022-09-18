@@ -115,7 +115,9 @@ const Members = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#viewMemberModal"
                   onClick={ (e) => viewMemberHandler(`${oneMember._id}`) }
-                >{ oneMember.initials }</button>
+                >
+                  { oneMember.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                </button>
               );
             })}
             {/* Button trigger create modal */}
