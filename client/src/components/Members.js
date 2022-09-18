@@ -11,15 +11,19 @@ const Members = () => {
   const [ name, setName ] = useState("");
   const [ errors, setErrors ] = useState([]);
 
+  // Specific state to trigger the useEffect on
+  const [ refreshRequired, setRefreshRequired ] = useState(false);
+
   // UseEffect call to get all of the Members from the Server.
   useEffect(() => {
     axios.get("http://localhost:8000/api/members")
     .then(res => {
       setMembers(res.data)
       console.log(res.data)
+      setRefreshRequired(false);
     })
     .catch(err => console.log(err))
-  }, []);
+  }, [refreshRequired]);
 
   const viewMemberHandler = (id) => {
     axios
@@ -43,6 +47,7 @@ const Members = () => {
           console.log(res.data);
           setSingleMember({});
           setName("");
+          setRefreshRequired(true);
         })
         .catch((err) => {
           console.log(err);
@@ -58,6 +63,8 @@ const Members = () => {
         console.log(res.data);
         setSingleMember({});
         setName("");
+        setErrors([]);
+        setRefreshRequired(true);
       })
       .catch((err) => {
         console.log(err.response.data.errors);
@@ -80,6 +87,7 @@ const Members = () => {
         console.log(res.data);
         setName("");
         setErrors([]);
+        setRefreshRequired(true);
       })
       .catch((err) => {
         console.log(err.response.data.errors);
