@@ -159,11 +159,19 @@ const Members = () => {
                       value={ name }
                       placeholder="Enter team member name"
                     />
-                    { errors.name ? <p className="text-danger">{ errors.name.message }</p> : null }
+                    {
+                      name.length < 3 ?
+                      <div className="text-danger">Name must be at least 3 characters long</div> :
+                      null
+                    }
                   </div>
                   <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-link" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn btn-primary" onClick={ createHandler }>Create Members</button>
+                    {
+                      name.length < 3 ?
+                      <p><button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ createHandler } disabled>Create Members</button></p> :
+                      <p><button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ createHandler }>Create Members</button></p>
+                    }
                   </div>
                 </form>
               </div>
@@ -202,7 +210,7 @@ const Members = () => {
                   </div>
                 <div className="d-flex justify-content-end">
                   <button type="button" className="btn btn-link" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" className="btn btn-danger" onClick={ deleteHandler }>Delete { name }</button>
+                  <button type="submit" className="btn btn-danger" data-bs-dismiss="modal" onClick={ deleteHandler }>Delete { name }</button>
                 </div>
               </div>
             </div>
@@ -234,11 +242,19 @@ const Members = () => {
                       name="name"
                       value={ name }
                     />
-                    { errors.name ? <p className="text-danger">{ errors.name.message }</p> : null }
+                    {
+                      name.length < 3 ?
+                      <div className="text-danger">Name must be at least 3 characters long</div> :
+                      null
+                    }
                   </div>
                   <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-link" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn btn-primary" onClick={ updateHandler }>Update { name }</button>
+                    {
+                      name.length < 3 ?
+                      <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ updateHandler } disabled>Update { name }</button> :
+                      <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ updateHandler }>Update { name }</button>
+                    }
                   </div>
                 </form>
               </div>
