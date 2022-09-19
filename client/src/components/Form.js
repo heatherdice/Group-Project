@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Form = (props) => {
-    const {handleSubmit, buttonText, oldTask} = props;
+    const {handleSubmit, buttonText, oldTask, buttonState, setButtonState} = props;
 
     //state for task model; will be filled on or blank if an old task exists
     const [task, setTask] = useState(oldTask || {
@@ -128,7 +128,7 @@ const Form = (props) => {
           name="state"
           type="text"
           className="d-block m-2"
-          value={task.state}
+          value={buttonState}
           onChange={handleChange}
         >
           <option value="">State of Task...</option>

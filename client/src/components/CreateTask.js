@@ -2,7 +2,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from "./Form";
 
-const CreateTask = () => {
+const CreateTask = (props) => {
+  
+  // Pulling down task status / status value from Board to pass to Form
+  const { buttonState, setButtonState } = props;
+
   const navigate = useNavigate();
 
   //make axios call from form request
@@ -21,7 +25,7 @@ const CreateTask = () => {
 
   return (
     <div>
-      <Form handleSubmit={submitHandler} buttonText={"Save & Close"} />
+      <Form handleSubmit={submitHandler} buttonText={"Save & Close"} buttonState={ buttonState } setButtonState={ setButtonState } />
     </div>
   );
 };

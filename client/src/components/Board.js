@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Board = () => {
+const Board = (props) => {
+    
+    //Lifting button state up to App to pass down to Create
+    const { buttonState, setButtonState } = props;
+    
     const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
+    const navigate = useNavigate(); //Setting up Navigate
 
     // UseEffect call to get all of the Tasks from the Server.
     useEffect(() => {
@@ -14,6 +19,11 @@ const Board = () => {
         })
         .catch(err => console.log(err))
     }, []);
+
+    const createFormHandler = (status) => {
+        setButtonState(status);
+        navigate("/task/create");
+    };
     
     return (
         <div className="container">
@@ -21,10 +31,18 @@ const Board = () => {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th className="column-wall">To-Do <Link to={`/create/`}><button className="addTask" value="To-Do">+</button></Link></th>
-                            <th className="column-wall">Do Today <Link to={`/create/`}><button className="addTask" value="Do Today">+</button></Link></th>
-                            <th className="column-wall">In Progress <Link to={`/create/`}><button className="addTask" value="In-Progress">+</button></Link></th>
-                            <th className="column-wall">Done <Link to={`/create/`}><button className="addTask" value="Done">+</button></Link></th>
+                            <th className="column-wall">To-Do
+                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('To-Do') }>+</button>
+                            </th>
+                            <th className="column-wall">Do Today
+                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('Do Today') }>+</button>
+                            </th>
+                            <th className="column-wall">In-Progress
+                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('In-Progress') }>+</button>
+                            </th>
+                            <th className="column-wall">Done
+                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('Done') }>+</button>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
