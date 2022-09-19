@@ -1,5 +1,6 @@
 import Members from '../components/Members';
 import Board from '../components/Board';
+import Footer from '../components/Footer';
 
 const Home = (props) => {
 
@@ -10,6 +11,7 @@ const Home = (props) => {
     <div className="container">
       <Members />
       <Board buttonState={ buttonState } setButtonState={ setButtonState } />
+      <Footer />
     </div>
   );
 };
