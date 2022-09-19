@@ -47,7 +47,7 @@ const Board = (props) => {
                 <form>
                     <select onChange = {(e)=>setColorFilter(e.target.value)}>
                     
-                        <option value="">Select Color...</option>
+                        <option value="All">All</option>
                         <option value="Yellow">Yellow</option>
                         <option value="Red">Red</option>
                         <option value="Orange">Orange</option>
@@ -58,7 +58,7 @@ const Board = (props) => {
                 </form>
                 <form>
                     <select onChange = {(e)=>setMemberFilter(e.target.value)}>
-                        <option value="">Select Member...</option>
+                        <option value="All">All</option>
                         { members.map((oneMember, index) => {
                             return (
                             <option key={index} value={oneMember._id}>{oneMember.name}</option>
