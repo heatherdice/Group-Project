@@ -5,7 +5,6 @@ import CreateTask from './components/CreateTask';
 import NavBar from './components/NavBar';
 import UpdateTask from './components/UpdateTask';
 import ViewTask from './components/ViewTask';
-import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           <Route element={ <ViewTask /> } path= "/task/:id" />
         </Routes>
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }
