@@ -21,6 +21,8 @@ const Board = (props) => {
         axios.get("http://localhost:8000/api/tasks")
         .then(res => {
             setTasks(res.data)
+            setMemberFilter("All")
+            setColorFilter("All")
             console.log(res.data)
         })
         .catch(err => console.log(err))
