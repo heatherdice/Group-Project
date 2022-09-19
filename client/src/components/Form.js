@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
     const {handleSubmit, buttonText, oldTask, buttonState, setButtonState} = props;
     const [members, setMembers] = useState([]);
+    const navigate = useNavigate();
 
     //state for task model; will be filled on or blank if an old task exists
     const [task, setTask] = useState(oldTask || {
@@ -60,13 +62,10 @@ const Form = (props) => {
 
   return (
     <div className="row">
-      <div className="col-6 mx-auto border border-dark p-3 bg-white rounded shadow">
+      <div className={`col-6 mx-auto border border-dark p-3 rounded shadow ${task.color}`}>
         <form onSubmit={submitHandler}>
-          {errors.name && (
-            <p className="text-danger">{errors.name.message}</p>
-          )}
           <div className="row">
-            <div className="col">
+            <div className="col-3">
               <label className="form-label">Task Name</label>
             </div>
             <div className="col">
@@ -77,13 +76,13 @@ const Form = (props) => {
                 value={task.name}
                 onChange={handleChange}
               />
-              {errors.service && (
-                <p className="text-danger">{errors.service.message}</p>
+              {errors.name && (
+                <p className="text-danger">{errors.name.message}</p>
               )}
             </div>
           </div>
           <div className="row mt-2">
-            <div className="col">
+            <div className="col-3">
               <label className="form-label">Service Type</label>
             </div>
             <div className="col">
@@ -98,13 +97,13 @@ const Form = (props) => {
               <option value="Regular">Regular</option>
               <option value="Expedited">Expedited</option>
               </select>
-              {errors.color && (
-                <p className="m-0 text-danger">{errors.color.message}</p>
+              {errors.service && (
+                <p className="text-danger">{errors.service.message}</p>
               )}
             </div>
           </div>
           <div className="row mt-2">
-              <div className="col">
+              <div className="col-3">
                 <label className="form-label">Color</label>
               </div>
               <div className="col">
@@ -123,10 +122,13 @@ const Form = (props) => {
                   <option value="Purple">Purple</option>
                   <option value="Green">Green</option>
                 </select>
+                {errors.color && (
+                <p className="text-danger">{errors.color.message}</p>
+                )}
               </div>
           </div>
           <div className="row mt-2">
-              <div className="col">
+              <div className="col-3">
                 <label className="form-label">Task Description</label>
               </div>
               <div className="col">
@@ -141,7 +143,7 @@ const Form = (props) => {
               </div>
           </div>
           <div className="row mt-2">
-              <div className="col">
+              <div className="col-3">
                 <label className="form-label">Assigned To</label>
               </div>
               <div className="col">
@@ -162,7 +164,7 @@ const Form = (props) => {
               </div>
           </div>
           <div className="row mt-2">
-              <div className="col">
+              <div className="col-3">
                 <label className="form-label">Due Date</label>
               </div>
               <div className="col">
@@ -173,13 +175,10 @@ const Form = (props) => {
                   value={convertDate(task.dueDate)}
                   onChange={handleChange}
                 />
-                {errors.state && (
-                  <p className="text-danger">{errors.state.message}</p>
-                )}
               </div>
           </div>
           <div className="row mt-2">
-            <div className="col">
+            <div className="col-3">
               <label className="form-label">State Of Task</label>
             </div>
             <div className="col">
@@ -187,7 +186,7 @@ const Form = (props) => {
                 name="state"
                 type="text"
                 className="form-select"
-                value={buttonState}
+                value={task.state = buttonState}
                 onChange={handleChange}
               >
                 <option value="" disabled hidden>State of Task...</option>
@@ -196,10 +195,14 @@ const Form = (props) => {
                 <option value="In-Progress">In-Progress</option>
                 <option value="Done">Done</option>
               </select>
+              {errors.state && (
+                  <p className="text-danger">{errors.state.message}</p>
+              )}
             </div>
           </div>
           <div className="d-flex justify-content-end mt-3">
-            <input className="btn btn-primary" type="submit" value={buttonText} />
+            <button className="btn btn-link text-secondary" onClick={ () => navigate("/")}>Cancel</button>
+            <input className="btn btn-secondary" type="submit" value={buttonText} />
           </div>
         </form>
       </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
 
 const ViewTask = () => {
@@ -17,7 +17,7 @@ const ViewTask = () => {
         .catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [id])
 
 
 
@@ -43,7 +43,7 @@ const ViewTask = () => {
     <div className="container">
       <div className="row">
         <div className="col-6 mx-auto">
-          <div className="border border-dark rounded shadow p-3">
+          <div className={`border border-dark rounded shadow p-3 ${task.color}`}>
             <p className="h2"> {task.name} </p>
             <p> <span className="fw-bold">Color:</span> {task.color} </p>
             <p> <span className="fw-bold">Description:</span> {task.description} </p>
@@ -51,10 +51,15 @@ const ViewTask = () => {
             <p> <span className="fw-bold">State:</span> {task.state} </p>
             <p> <span className="fw-bold">Due Date:</span> {convertDate(task.dueDate)} </p>
             <div className="d-flex gap-2 justify-content-end">
-              <Link to={`/updatetask/${task._id}`}><button className="btn btn-primary" type="button">Update</button></Link>
-              <DeleteButton id={task._id} handleDelete={() => navigate('/') }/>
+              <button className="btn btn-link text-secondary" type="button" onClick={ () => navigate("/")}>Cancel</button>
+              <button className="btn btn-secondary" type="button" onClick={ () => navigate(`/updatetask/${task._id}`) }>Update</button>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <DeleteButton id={task._id} handleDelete={() => navigate('/') }/>
         </div>
       </div>
     </div>

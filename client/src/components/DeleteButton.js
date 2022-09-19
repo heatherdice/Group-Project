@@ -16,8 +16,8 @@ const DeleteButton = (props) => {
     }
 
   return (
-    <div>
-        <button onClick={inactiveTask} className="btn btn-danger" type="button">Delete</button>
+    <div className="d-flex justify-content-end col-6 mx-auto p-3">
+      <button onClick={inactiveTask} className="btn btn-link text-danger" type="button">Delete</button>
     </div>
   )
 }
