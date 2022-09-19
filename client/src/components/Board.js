@@ -8,11 +8,13 @@ const Board = (props) => {
     //Lifting button state up to App to pass down to Create
     const { buttonState, setButtonState } = props;
     
-    const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
+    const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server. (filtered)
     const [members, setMembers] = useState([]) // State to hold the members
 
     const [memberFilter, setMemberFilter] = useState("All") // Creating state to hold the Member Filter value
     const [colorFilter, setColorFilter] = useState("All") // Creating state to hold the Color Filter value
+
+    const [fullTasks, setFullTasks] = useState([]) // State to hold the FULL list of unfiltered Tasks.
 
     const navigate = useNavigate(); //Setting up Navigate
 
@@ -20,7 +22,7 @@ const Board = (props) => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/tasks")
         .then(res => {
-            setTasks(res.data)
+            setFullTasks(res.data)
             setMemberFilter("All")
             setColorFilter("All")
             console.log(res.data)
@@ -28,6 +30,15 @@ const Board = (props) => {
         .catch(err => console.log(err))
     }, []);
 
+    //UseEffect to filter down the Tasks by Color
+    useEffect(() => {
+        if (colorFilter === "All") {
+            setTasks(fullTasks)
+        } else if(colorFilter !== "All") {
+            setTasks(fullTasks.filter(tasks => tasks.color === colorFilter))
+        }
+    }, [fullTasks, colorFilter]);
+    
     // UseEffect call to get all of the Members from the Server.
     useEffect(() => {
         axios.get("http://localhost:8000/api/members")
