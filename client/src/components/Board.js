@@ -11,8 +11,8 @@ const Board = (props) => {
     const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
     const [members, setMembers] = useState([]) // State to hold the members
 
-    const [memberFilter, setMemberFilter] = useState("") // Creating state to hold the Member Filter value
-    const [colorFilter, setColorFilter] = useState("") // Creating state to hold the Color Filter value
+    const [memberFilter, setMemberFilter] = useState("All") // Creating state to hold the Member Filter value
+    const [colorFilter, setColorFilter] = useState("All") // Creating state to hold the Color Filter value
 
     const navigate = useNavigate(); //Setting up Navigate
 
