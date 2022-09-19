@@ -24,7 +24,7 @@ const CreateTask = (props) => {
   };
 
   return (
-    <div>
+    <div className="container">
       <Form handleSubmit={submitHandler} buttonText={"Save & Close"} buttonState={ buttonState } setButtonState={ setButtonState } />
     </div>
   );

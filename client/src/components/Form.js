@@ -59,114 +59,150 @@ const Form = (props) => {
   }
 
   return (
-    <div>
-      <form onSubmit={submitHandler} className="m-2">
-        {errors.name && (
-          <p className="m-0 text-danger">{errors.name.message}</p>
-        )}
-        <input
-          className="d-block m-2"
-          type="text"
-          placeholder="Task name..."
-          name="name"
-          value={task.name}
-          onChange={handleChange}
-        />
-
-        {errors.service && (
-          <p className="m-0 text-danger">{errors.service.message}</p>
-        )}
-        <select
-          name="service"
-          type="text"
-          className="d-block m-2"
-          value={task.service}
-          onChange={handleChange}
-        >
-          <option value="">Service Type...</option>
-          <option value="Regular">Regular</option>
-          <option value="Expedited">Expedited</option>
-        </select>
-
-        {errors.color && (
-          <p className="m-0 text-danger">{errors.color.message}</p>
-        )}
-        <select
-          name="color"
-          type="text"
-          className="d-block m-2"
-          value={task.color}
-          onChange={handleChange}
-        >
-          <option value="Yellow">Yellow</option>
-          <option value="Red">Red</option>
-          <option value="Orange">Orange</option>
-          <option value="Blue">Blue</option>
-          <option value="Purple">Purple</option>
-          <option value="Green">Green</option>
-        </select>
-
-        <textarea
-          className="d-block m-2"
-          name="description"
-          rows="4"
-          cols="50"
-          placeholder="Add description..."
-          value={task.description}
-          onChange={handleChange}
-        ></textarea>
-
-        {/* <input
-          className="d-block m-2"
-          type="text"
-          placeholder="Assigned to..."
-          name="assigned"
-          value={task.assigned}
-          onChange={handleChange}
-        /> */}
-
-        <select
-        className="d-block m-2"
-        type="text"
-        name="assigned"
-        value={task.assigned}
-        onChange={handleChange}
-        >
-          <option value="">Assigned to...</option>
-          {members.map((member) => {
-            return(
-              <option value={member.name}>{member.name}</option>
-            );
-          })}
-        </select>
-
-        <label>Due Date:</label>
-        <input
-          type="date"
-          name="dueDate"
-          value={convertDate(task.dueDate)}
-          onChange={handleChange}
-        />
-
-        {errors.state && (
-          <p className="m-0 text-danger">{errors.state.message}</p>
-        )}
-        <select
-          name="state"
-          type="text"
-          className="d-block m-2"
-          value={buttonState}
-          onChange={handleChange}
-        >
-          <option value="">State of Task...</option>
-          <option value="To-Do">To-Do</option>
-          <option value="Do Today">Do Today</option>
-          <option value="In-Progress">In-Progress</option>
-          <option value="Done">Done</option>
-        </select>
-
-        <input type="submit" value={buttonText} />
-      </form>
+    <div className="row">
+      <div className="col-6 mx-auto border border-dark p-3 bg-white rounded shadow">
+        <form onSubmit={submitHandler}>
+          {errors.name && (
+            <p className="text-danger">{errors.name.message}</p>
+          )}
+          <div className="row">
+            <div className="col">
+              <label className="form-label">Task Name</label>
+            </div>
+            <div className="col">
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                value={task.name}
+                onChange={handleChange}
+              />
+              {errors.service && (
+                <p className="text-danger">{errors.service.message}</p>
+              )}
+            </div>
+          </div>
+          <div className="row mt-2">
+            <div className="col">
+              <label className="form-label">Service Type</label>
+            </div>
+            <div className="col">
+              <select
+                name="service"
+                type="text"
+                className="form-select"
+                value={task.service}
+                onChange={handleChange}
+              >
+              <option value="" disabled hidden>Select Service Type...</option>
+              <option value="Regular">Regular</option>
+              <option value="Expedited">Expedited</option>
+              </select>
+              {errors.color && (
+                <p className="m-0 text-danger">{errors.color.message}</p>
+              )}
+            </div>
+          </div>
+          <div className="row mt-2">
+              <div className="col">
+                <label className="form-label">Color</label>
+              </div>
+              <div className="col">
+                <select
+                name="color"
+                type="text"
+                className="form-select"
+                value={task.color}
+                onChange={handleChange}
+                >
+                  <option value="" disabled hidden>Select Color...</option>
+                  <option value="Yellow">Yellow</option>
+                  <option value="Red">Red</option>
+                  <option value="Orange">Orange</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Purple">Purple</option>
+                  <option value="Green">Green</option>
+                </select>
+              </div>
+          </div>
+          <div className="row mt-2">
+              <div className="col">
+                <label className="form-label">Task Description</label>
+              </div>
+              <div className="col">
+                <textarea
+                  className="form-control"
+                  name="description"
+                  rows="4"
+                  cols="50"
+                  value={task.description}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+          </div>
+          <div className="row mt-2">
+              <div className="col">
+                <label className="form-label">Assigned To</label>
+              </div>
+              <div className="col">
+                <select
+                  className="form-select"
+                  type="text"
+                  name="assigned"
+                  value={task.assigned}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled hidden>Assigned to...</option>
+                  {members.map((member, index) => {
+                    return(
+                      <option key={index} value={member.name}>{member.name}</option>
+                    );
+                  })}
+                </select>
+              </div>
+          </div>
+          <div className="row mt-2">
+              <div className="col">
+                <label className="form-label">Due Date</label>
+              </div>
+              <div className="col">
+                <input
+                  className="form-control"
+                  type="date"
+                  name="dueDate"
+                  value={convertDate(task.dueDate)}
+                  onChange={handleChange}
+                />
+                {errors.state && (
+                  <p className="text-danger">{errors.state.message}</p>
+                )}
+              </div>
+          </div>
+          <div className="row mt-2">
+            <div className="col">
+              <label className="form-label">State Of Task</label>
+            </div>
+            <div className="col">
+              <select
+                name="state"
+                type="text"
+                className="form-select"
+                value={buttonState}
+                onChange={handleChange}
+              >
+                <option value="" disabled hidden>State of Task...</option>
+                <option value="To-Do">To-Do</option>
+                <option value="Do Today">Do Today</option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Done">Done</option>
+              </select>
+            </div>
+          </div>
+          <div className="d-flex justify-content-end mt-3">
+            <input className="btn btn-primary" type="submit" value={buttonText} />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
