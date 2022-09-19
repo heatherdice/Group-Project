@@ -1,8 +1,4 @@
 /* CSS for styling the Kanban Board */
-.container {
-    max-width: 100%;
-    max-height: auto;
-}
 table {
     height: 100vh;
     table-layout: fixed;
