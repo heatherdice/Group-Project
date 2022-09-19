@@ -14,7 +14,7 @@ const Form = (props) => {
         description:'',
         service:'',
         state:'',
-        assigned:'',
+        assignedRef:'',
         dueDate:''
     });
 
@@ -150,14 +150,14 @@ const Form = (props) => {
                 <select
                   className="form-select"
                   type="text"
-                  name="assigned"
-                  value={task.assigned}
+                  name="assignedRef"
+                  value={task.assignedRef}
                   onChange={handleChange}
                 >
                   <option value="" disabled hidden>Assigned to...</option>
-                  {members.map((member, index) => {
+                  {members.map((oneMember, index) => {
                     return(
-                      <option key={index} value={member.name}>{member.name}</option>
+                      <option key={index} value={oneMember._id}>{oneMember.name}</option>
                     );
                   })}
                 </select>

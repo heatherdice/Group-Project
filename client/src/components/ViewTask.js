@@ -47,7 +47,7 @@ const ViewTask = () => {
             <p className="h2"> {task.name} </p>
             <p> <span className="fw-bold">Color:</span> {task.color} </p>
             <p> <span className="fw-bold">Description:</span> {task.description} </p>
-            <p> <span className="fw-bold">Assigned To:</span> {task.assigned} </p>
+            {/* <p> <span className="fw-bold">Assigned To:</span> {task.assignedRef.name} </p> */}
             <p> <span className="fw-bold">State:</span> {task.state} </p>
             <p> <span className="fw-bold">Due Date:</span> {convertDate(task.dueDate)} </p>
             <div className="d-flex gap-2 justify-content-end">
