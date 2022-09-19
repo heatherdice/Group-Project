@@ -76,7 +76,19 @@ const Board = (props) => {
                             <td className="column-wall">(Expedited Service)
                                 {tasks.filter(task => task.state === "To-Do" && task.service === "Expedited").map((task, index) =>{
                                     return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                        <div>
+                                            <Link className="no-underline" to={`/task/${task._id}`}>
+                                                <div className={`${task.color} task-card no-underline`}>{task.name}</div>
+                                            </Link>
+                                        </div>
+                                        <div>
+                                            {/* <button
+                                                className="btn btn-outline-dark btn-circle"
+                                            >
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </button> */}
+                                        </div>
+                                        </div>
                                 })}
                             </td>
                             {/* Do Today - Expedited Service */}
