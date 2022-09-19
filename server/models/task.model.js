@@ -24,7 +24,7 @@ const TaskSchema = new mongoose.Schema({
 
     service: {
       type: String,
-      required: [true, "Color is required"],
+      required: [true, "Service is required"],
       enum: {
         values: ["Expedited", "Regular"],
         message: "Select an available option",
