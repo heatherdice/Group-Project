@@ -6,7 +6,7 @@ const Footer = () => {
 
     <div className="container m-3">
       <div className="row">
-        <div className="col-sm-1">
+        <div className="col-auto">
           <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noreferrer"><img src={ ccByNc } alt="Creative Commons Attribution-NonCommercial 4.0 International License" height="50"/></a>
         </div>
         <div className="col fw-light lh-1 text-break">
