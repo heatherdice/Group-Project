@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import bunPrimary from '../assets/bunPrimary.png';
 
 const Board = (props) => {
     
@@ -32,16 +33,40 @@ const Board = (props) => {
                     <thead>
                         <tr>
                             <th className="column-wall">To-Do
-                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('To-Do') }>+</button>
+                                <img 
+                                    src={ bunPrimary }
+                                    alt="Blue CinnaKanban"
+                                    className="bun-circle"
+                                    type="button"
+                                    onClick={ (e) => createFormHandler('To-Do') }
+                                />
                             </th>
                             <th className="column-wall">Do Today
-                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('Do Today') }>+</button>
+                                <img 
+                                    src={ bunPrimary }
+                                    alt="Blue CinnaKanban"
+                                    className="bun-circle"
+                                    type="button"
+                                    onClick={ (e) => createFormHandler('Do Today') }
+                                />
                             </th>
                             <th className="column-wall">In-Progress
-                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('In-Progress') }>+</button>
+                                <img 
+                                    src={ bunPrimary }
+                                    alt="Blue CinnaKanban"
+                                    className="bun-circle"
+                                    type="button"
+                                    onClick={ (e) => createFormHandler('In-Progress') }
+                                />
                             </th>
                             <th className="column-wall">Done
-                                <button type="button" className="btn btn-outline-primary btn-circle" onClick={ (e) => createFormHandler('Done') }>+</button>
+                                <img 
+                                    src={ bunPrimary }
+                                    alt="Blue CinnaKanban"
+                                    className="bun-circle"
+                                    type="button"
+                                    onClick={ (e) => createFormHandler('Done') }
+                                />
                             </th>
                         </tr>
                     </thead>

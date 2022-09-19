@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import bunSuccess from '../assets/bunSuccess.png';
 
 const Members = () => {
 
@@ -116,15 +117,15 @@ const Members = () => {
               );
             })}
             {/* Button trigger create modal */}
-            <button
+            <img
+              src={ bunSuccess }
+              alt="Green CinnaKanban"
+              className="bun-circle"
               type="button"
-              className="btn btn-outline-success btn-circle"
               data-bs-toggle="modal"
               data-bs-target="#createMemberModal"
               onClick={ cleanUpHandler }
-            >
-              +
-            </button>
+            />
           </div>
         </div>
         {/* Create modal */}

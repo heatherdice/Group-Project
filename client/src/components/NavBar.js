@@ -1,11 +1,24 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import cinnaKanbanLogo from '../assets/cinnaKanbanLogo.png';
 
 const NavBar = () => {
+
+  const navigate = useNavigate();
+
   return (
-    <div>
-        {/* Use NavLink instead of the <a></a> link tag for the navbar when you create/style it */}
-        <NavLink to={'/'} >Kanban Board</NavLink>
+    <div className="container">
+      <nav className="navbar">
+        <div className="container-fluid">
+          <img
+            src={cinnaKanbanLogo}
+            alt="CinnaKanban Logo"
+            className="navbar-brand"
+            height="50px"
+            onClick={ () => navigate("/") }
+          />
+        </div>
+      </nav>
     </div>
   )
 }

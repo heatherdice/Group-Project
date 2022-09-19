@@ -62,6 +62,12 @@ table tr:last-child td:last-child {
     text-align: center;
 }
 
+.bun-circle {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
 /* Easily add just Display:Flex to a component */
 .flex{
     display:flex;
