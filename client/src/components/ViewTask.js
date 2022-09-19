@@ -5,6 +5,7 @@ import DeleteButton from "./DeleteButton";
 
 const ViewTask = () => {
     const [task, setTask] = useState({});
+    const [ assignedMember, setAssignedMember ] = useState({});
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -13,6 +14,7 @@ const ViewTask = () => {
         .then((res) => {
             console.log(res.data);
             setTask(res.data);
+            setAssignedMember(res.data.assignedRef);
         })
         .catch((err) => {
             console.log(err);
@@ -47,7 +49,7 @@ const ViewTask = () => {
             <p className="h2"> {task.name} </p>
             <p> <span className="fw-bold">Color:</span> {task.color} </p>
             <p> <span className="fw-bold">Description:</span> {task.description} </p>
-            {/* <p> <span className="fw-bold">Assigned To:</span> {task.assignedRef.name} </p> */}
+            <p> <span className="fw-bold">Assigned To:</span> {assignedMember.name} </p>
             <p> <span className="fw-bold">State:</span> {task.state} </p>
             <p> <span className="fw-bold">Due Date:</span> {convertDate(task.dueDate)} </p>
             <div className="d-flex gap-2 justify-content-end">

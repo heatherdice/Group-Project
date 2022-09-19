@@ -151,7 +151,7 @@ const Form = (props) => {
                   className="form-select"
                   type="text"
                   name="assignedRef"
-                  value={task.assignedRef}
+                  value={task.assignedRef._id}
                   onChange={handleChange}
                 >
                   <option value="" disabled hidden>Assigned to...</option>
@@ -186,7 +186,11 @@ const Form = (props) => {
                 name="state"
                 type="text"
                 className="form-select"
-                value={task.state = buttonState}
+                value={
+                  buttonText === "Save & Close" ?
+                  task.state = buttonState :
+                  task.state
+                }
                 onChange={handleChange}
               >
                 <option value="" disabled hidden>State of Task...</option>
