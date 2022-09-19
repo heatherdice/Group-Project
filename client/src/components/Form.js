@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Form = (props) => {
     const {handleSubmit, buttonText, oldTask, buttonState, setButtonState} = props;
+    const [members, setMembers] = useState([]);
 
     //state for task model; will be filled on or blank if an old task exists
     const [task, setTask] = useState(oldTask || {
@@ -16,6 +18,16 @@ const Form = (props) => {
 
   //set validation errors
   const [errors, setErrors] = useState("");
+
+  //get all members
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/members")
+    .then(res => {
+      console.log(res.data);
+      setMembers(res.data)
+    })
+    .catch(err => console.log(err))
+  },[]);
 
   //convert date to usable format
   const convertDate = (dataDate) => {
@@ -104,14 +116,29 @@ const Form = (props) => {
           onChange={handleChange}
         ></textarea>
 
-        <input
+        {/* <input
           className="d-block m-2"
           type="text"
           placeholder="Assigned to..."
           name="assigned"
           value={task.assigned}
           onChange={handleChange}
-        />
+        /> */}
+
+        <select
+        className="d-block m-2"
+        type="text"
+        name="assigned"
+        value={task.assigned}
+        onChange={handleChange}
+        >
+          <option value="">Assigned to...</option>
+          {members.map((member) => {
+            return(
+              <option value={member.name}>{member.name}</option>
+            );
+          })}
+        </select>
 
         <label>Due Date:</label>
         <input
