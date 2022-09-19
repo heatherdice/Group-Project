@@ -17,7 +17,7 @@ const DeleteButton = (props) => {
 
   return (
     <div>
-        <button onClick={inactiveTask} >Delete</button>
+        <button onClick={inactiveTask} className="btn btn-danger" type="button">Delete</button>
     </div>
   )
 }

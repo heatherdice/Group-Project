@@ -40,15 +40,23 @@ const ViewTask = () => {
   };
 
   return (
-    <div className={task.color}>
-        <p> {task.name} </p>
-        <p> Color: {task.color} </p>
-        <p> Description: {task.description} </p>
-        <p> Assigned To: {task.assigned} </p>
-        <p> State: {task.state} </p>
-        <p> Due Date: {convertDate(task.dueDate)} </p>
-        <Link to={`/updatetask/${task._id}`}><button>Update</button></Link>
-        <DeleteButton id={task._id} handleDelete={() => navigate('/') } />
+    <div className="container">
+      <div className="row">
+        <div className="col-6 mx-auto">
+          <div className="border border-dark rounded shadow p-3">
+            <p className="h2"> {task.name} </p>
+            <p> <span className="fw-bold">Color:</span> {task.color} </p>
+            <p> <span className="fw-bold">Description:</span> {task.description} </p>
+            <p> <span className="fw-bold">Assigned To:</span> {task.assigned} </p>
+            <p> <span className="fw-bold">State:</span> {task.state} </p>
+            <p> <span className="fw-bold">Due Date:</span> {convertDate(task.dueDate)} </p>
+            <div className="d-flex gap-2 justify-content-end">
+              <Link to={`/updatetask/${task._id}`}><button className="btn btn-primary" type="button">Update</button></Link>
+              <DeleteButton id={task._id} handleDelete={() => navigate('/') }/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
