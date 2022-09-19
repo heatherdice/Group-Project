@@ -9,6 +9,11 @@ const Board = (props) => {
     const { buttonState, setButtonState } = props;
     
     const [tasks, setTasks] = useState([]); //Creating State to hold the list of all tasks from the server.
+    const [members, setMembers] = useState([]) // State to hold the members
+
+    const [memberFilter, setMemberFilter] = useState("") // Creating state to hold the Member Filter value
+    const [colorFilter, setColorFilter] = useState("") // Creating state to hold the Color Filter value
+
     const navigate = useNavigate(); //Setting up Navigate
 
     // UseEffect call to get all of the Tasks from the Server.
@@ -21,6 +26,16 @@ const Board = (props) => {
         .catch(err => console.log(err))
     }, []);
 
+    // UseEffect call to get all of the Members from the Server.
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/members")
+        .then(res => {
+            setMembers(res.data);
+            console.log(res.data);
+        })
+        .catch(err => console.log(err))
+    }, []);
+
     const createFormHandler = (status) => {
         setButtonState(status);
         navigate("/task/create");
@@ -29,6 +44,27 @@ const Board = (props) => {
     return (
         <div className="container">
             <div>
+                <form>
+                    <select onChange = {(e)=>setColorFilter(e.target.value)}>
+                    
+                        <option value="">Select Color...</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Green">Green</option>
+                    </select>
+                </form>
+                <form>
+                    <select onChange = {(e)=>setMemberFilter(e.target.value)}>
+                        <option value="">Select Member...</option>
+                        { members.map((oneMember, index) => {
+                            return (
+                            <option key={index} value={oneMember._id}>{oneMember.name}</option>
+                            ) })}
+                    </select>
+                </form>
                 <table className="table">
                     <thead>
                         <tr>
