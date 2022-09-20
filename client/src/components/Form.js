@@ -175,7 +175,9 @@ const Form = (props) => {
                   className="form-control"
                   type="date"
                   name="dueDate"
-                  value={convertDate(task.dueDate)}
+                  value={buttonText === "Save & Update" ?
+                        convertDate(task.dueDate) :
+                        task.dueDate}
                   onChange={handleChange}
                 />
               </div>
@@ -189,11 +191,9 @@ const Form = (props) => {
                 name="state"
                 type="text"
                 className="form-select"
-                value={
-                  buttonText === "Save & Close" ?
-                  task.state = buttonState :
-                  task.state
-                }
+                value={buttonText === "Save & Close" ?
+                task.state = task.state || buttonState :
+                task.state}
                 onChange={handleChange}
               >
                 <option value="" disabled hidden>State of Task...</option>
