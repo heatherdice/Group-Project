@@ -151,10 +151,10 @@ const Form = (props) => {
                   className="form-select"
                   type="text"
                   name="assignedRef"
-                  value={task.assignedRef._id}
+                  value={ task.assignedRef._id }
                   onChange={handleChange}
                 >
-                  <option value="" disabled hidden>Assigned to...</option>
+                  <option value="">Assigned to...</option>
                   {members.map((oneMember, index) => {
                     return(
                       <option key={index} value={oneMember._id}>{oneMember.name}</option>
@@ -204,8 +204,8 @@ const Form = (props) => {
               )}
             </div>
           </div>
-          <div className="d-flex justify-content-end mt-3">
-            <button className="btn btn-link text-secondary" onClick={ () => navigate("/")}>Cancel</button>
+          <div className="d-flex justify-content-end mt-3 gap-2">
+            <button className="btn btn-outline-secondary" onClick={ () => navigate("/")}>Cancel</button>
             <input className="btn btn-secondary" type="submit" value={buttonText} />
           </div>
         </form>

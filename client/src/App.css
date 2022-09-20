@@ -24,30 +24,8 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
-/* .column-wall {
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-} */
-/* .column-divider {
-    border-top: 2px solid black;
-} */
 
-/* Used to size the images for Members above the board */
-.bi-person-circle {
-    font-size:40px;
-    padding-left: 10px
-}
-
-/* Used to modify the Add Member button to match Member-Img */
-.member-add {
-    border-radius: 25px;
-    height: 40px;
-    width: 40px;
-    margin-left: 10px;
-    background-color: white;
-}
-
-/* New styling for the Member images and add button above the board */
+/* New styling for the Member images above the board */
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -58,42 +36,16 @@ table tr:last-child td:last-child {
     text-align: center;
 }
 
+/* New styling for the add button above the board */
 .bun-circle {
     width: 30px;
     height: 30px;
     margin-left: 5px;
 }
 
-/* Easily add just Display:Flex to a component */
-.flex{
-    display:flex;
-}
-/* Used to get "Group 5 Board", the User icons, and the add User button inline */
-.vertical-align{
-    align-items: center;
-}
-/* Used so that the Tasks don't look like Hyperlinks */
-.no-underline{
-    text-decoration: none;
-    color: black
-}
 /* Task button styling */
-.addTask {
-    border-radius: 100%;
-    width: 30px;
-    height: 30px;
-    background-color: #e6e3dc;
-    text-align: center;
-}
-
 .task {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.task-card{
-    padding: 10px;
-    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* End CSS for styling the Kanban Board */
@@ -102,6 +54,6 @@ table tr:last-child td:last-child {
 .Red{background-color: #ff595e;}
 .Yellow{background-color: #ffca3a;}
 .Green{background-color: #8ac926;}
-.Blue{background-color: #1982c4;}
-.Purple{background-color: #6a4c93;}
+.Blue{background-color: #1982c4; color: #fff}
+.Purple{background-color: #6a4c93; color: #fff}
 .Orange{background-color: orange}
