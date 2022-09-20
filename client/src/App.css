@@ -1,4 +1,8 @@
 /* CSS for styling the Kanban Board */
+.navbar-brand{
+    cursor: pointer;
+}
+
 table {
     height: 100vh;
     table-layout: fixed;
