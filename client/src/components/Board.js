@@ -57,27 +57,44 @@ const Board = (props) => {
     return (
         <div className="container">
             <div>
-                <form>
-                    <select onChange = {(e)=>setColorFilter(e.target.value)}>
-                    
-                        <option value="All">All</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Red">Red</option>
-                        <option value="Orange">Orange</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Purple">Purple</option>
-                        <option value="Green">Green</option>
-                    </select>
-                </form>
-                <form>
-                    <select onChange = {(e)=>setMemberFilter(e.target.value)}>
-                        <option value="All">All</option>
-                        { members.map((oneMember, index) => {
-                            return (
-                            <option key={index} value={oneMember._id}>{oneMember.name}</option>
-                            ) })}
-                    </select>
-                </form>
+                <div>
+                    <form>
+                        <div className="row border border-dark rounded shadow mx-1 mb-2 bg-white p-3">
+                            <div className="col d-flex align-items-center gap-2">
+                                <div className="col-auto">
+                                    <label className="form-label fw-bold">Filter by Color:</label>
+                                </div>
+                                <div className="col">
+                                    <select className="form-select" onChange = {(e)=>setColorFilter(e.target.value)}>
+                                        <option value="All">All</option>
+                                        <option value="Yellow">Yellow</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Orange">Orange</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Purple">Purple</option>
+                                        <option value="Green">Green</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="col d-flex align-items-center gap-2">
+                                <div className="col-auto">
+                                    <label className="form-label fw-bold">Filter by Member:</label>
+                                </div>
+                                <div className="col">
+                                    <select className="form-select" onChange = {(e)=>setMemberFilter(e.target.value)}>
+                                        <option value="All">All</option>
+                                        {
+                                            members.map((oneMember, index) => {
+                                            return (
+                                                <option key={index} value={oneMember._id}>{oneMember.name}</option>
+                                            )})
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <table className="table">
                     <thead>
                         <tr>
@@ -124,43 +141,63 @@ const Board = (props) => {
                             {/* To Do - Expedited Service */}
                             <td className="column-wall">(Expedited Service)
                                 {tasks.filter(task => task.state === "To-Do" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <div>
-                                            <Link className="no-underline" to={`/task/${task._id}`}>
-                                                <div className={`${task.color} task-card no-underline`}>{task.name}</div>
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            {/* <button
-                                                className="btn btn-outline-dark btn-circle"
-                                            >
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
                                                 { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
-                                            </button> */}
+                                            </div>
                                         </div>
-                                        </div>
+                                    )
                                 })}
                             </td>
                             {/* Do Today - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Do Today" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
 
                             {/* In Progress - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "In-Progress" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
 
                             {/* Done - Expedited Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Done" && task.service === "Expedited").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
                         </tr>
@@ -169,32 +206,64 @@ const Board = (props) => {
                             {/* To Do - Regular Service */}
                             <td className="column-wall">(Regular Service)
                                 {tasks.filter(task => task.state === "To-Do" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
 
                             {/* Do Today - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Do Today" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
 
                             {/* In Progress - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "In-Progress" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
 
                             {/* Done - Regular Service */}
                             <td className="column-wall">
                                 {tasks.filter(task => task.state === "Done" && task.service === "Regular").map((task, index) =>{
-                                    return <div className="task" key={index}>
-                                        <Link className="no-underline" to={`/task/${task._id}`}><div className={`${task.color} task-card`}>{task.name}</div></Link></div>
+                                    return (
+                                        <div className={`${ task.color } d-flex justify-content-between mb-2 rounded p-2 task`} key={ index } onClick={ () => navigate(`/task/${task._id}`) }>
+                                            <div className="text-truncate">
+                                                { task.name }
+                                            </div>
+                                            <div className="fw-bold">
+                                                { task.assignedRef.name.match(/\b([A-Za-z0-9])/g).join('').toUpperCase() }
+                                            </div>
+                                        </div>
+                                    )
                                 })}
                             </td>
                         </tr>

@@ -93,13 +93,8 @@ const Members = () => {
 
     return (
       <div className="container">
-        <div className="row d-flex align-items-baseline">
-          <div className="col col-sm-3">
-            <p className="h2">Group 5 Board</p>
-          </div>
-          <div className="col col-sm-1">
-            <p>Members:</p>
-          </div>
+        <div className="row d-flex align-items-baseline mb-3">
+          <div className="col-auto fw-bold">Members:</div>
           <div className="col">
             { members.map((oneMember, index) => {
               return (

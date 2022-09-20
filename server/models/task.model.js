@@ -6,6 +6,7 @@ const TaskSchema = new mongoose.Schema({
       required: [true, "Name is required"],
       minLength: [3, "Name must be at least 3 characters long"],
       maxLength: [255, "Name must be at most 255 characters long"],
+      unique: true,
     },
 
     color: {
@@ -38,11 +39,6 @@ const TaskSchema = new mongoose.Schema({
         values: ["To-Do", "Do Today", "In-Progress", "Done", "Inactive"],
         message: "Select an available option",
       },
-    },
-
-    assigned: {
-      type: String,
-      maxLength: [255, "Description must be at most 255 characters long"],
     },
 
     assignedRef: {
