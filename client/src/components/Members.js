@@ -11,6 +11,12 @@ const Members = () => {
   // Create State to hold values for create form
   const [ name, setName ] = useState("");
 
+  // Create State to hold form validation errors
+  const [ tooShort, setTooShort ] = useState("Name must be at least 3 characters long");
+  const [ tooLong, setTooLong ] = useState("Name must be at most 255 characters long");
+  const [ nonLetters, setNonLetters ] = useState("Name must not contain numbers or special characters");
+  const [ longSpaces, setLongSpaces ] = useState("Name must not contain multiple sequential spaces");
+
   // Specific state to trigger the useEffect on
   const [ refreshRequired, setRefreshRequired ] = useState(false);
 
@@ -25,7 +31,31 @@ const Members = () => {
     .catch(err => console.log(err))
   }, [refreshRequired]);
 
+  //  // Validating that the name entered conforms to standards  
+    const validateName = () => {
+    setTooShort("");
+    setTooLong("");
+    setNonLetters("");
+    setLongSpaces("");
+    if (name.length < 3) {
+      setTooShort("Name must be at least 3 characters long" );
+    }
+    if (name.length > 255) {
+      setTooLong("Name must be at most 255 characters long");
+    }
+    if (!/^[a-z\d\-_\s]+$/i.test(name)) {
+      setNonLetters("Name must not contain numbers or special characters");
+    }
+    if (/  +/g.test(name)) {
+      setLongSpaces("Name must not contain multiple sequential spaces");
+    }
+  };
+
   const viewMemberHandler = (id) => {
+    setTooShort("Name must be at least 3 characters long");
+    setTooLong("Name must be at most 255 characters long");
+    setNonLetters("Name must not contain numbers or special characters");
+    setLongSpaces("Name must not contain multiple sequential spaces");
     axios
       .get(`http://localhost:8000/api/members/${id}`)  
       .then((res) => {
@@ -64,6 +94,10 @@ const Members = () => {
         setSingleMember({});
         setName("");
         setRefreshRequired(true);
+        setTooShort("Name must be at least 3 characters long");
+        setTooLong("Name must be at most 255 characters long");
+        setNonLetters("Name must not contain numbers or special characters");
+        setLongSpaces("Name must not contain multiple sequential spaces");
       })
       .catch((err) => {
         console.log(err.response.data.errors);
@@ -74,6 +108,10 @@ const Members = () => {
   const cleanUpHandler = (e) => {
     setSingleMember({});
     setName("");
+    setTooShort("Name must be at least 3 characters long");
+    setTooLong("Name must be at most 255 characters long");
+    setNonLetters("Name must not contain numbers or special characters");
+    setLongSpaces("Name must not contain multiple sequential spaces");
   };
 
   // Submit handler for the create member modal
@@ -85,6 +123,10 @@ const Members = () => {
         console.log(res.data);
         setName("");
         setRefreshRequired(true);
+        setTooShort("Name must be at least 3 characters long");
+        setTooLong("Name must be at most 255 characters long");
+        setNonLetters("Name must not contain numbers or special characters");
+        setLongSpaces("Name must not contain multiple sequential spaces");
       })
       .catch((err) => {
         console.log(err.response.data.errors);
@@ -141,25 +183,50 @@ const Members = () => {
                 <form>
                   <div className="mb-3">
                     <label htmlFor="member-name" className="col-form-label">Member Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="member-name"
-                      onChange={ (e) => setName(e.target.value) }
-                      name="name"
-                      value={ name }
-                      placeholder="Enter team member name"
-                    />
+                    <div className="d-flex gap-3 align-items-baseline">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="member-name"
+                        onChange={ (e) => setName(e.target.value) }
+                        name="name"
+                        value={ name }
+                        placeholder="Enter team member name"
+                      />
+                      {/* Button to trigger the name validation */}
+                      <button
+                        type="button"
+                        className="btn btn-info"
+                        onClick={ validateName }
+                      >
+                        Validate
+                      </button>
+                    </div>
                     {
-                      name.length < 3 ?
-                      <div className="text-danger">Name must be at least 3 characters long</div> :
+                      tooShort ?
+                      <div className="text-info">{ tooShort }</div> :
+                      null
+                    }
+                    {
+                      tooLong ?
+                      <div className="text-info">{ tooLong }</div> :
+                      null
+                    }
+                    {
+                      nonLetters ?
+                      <div className="text-info">{ nonLetters }</div> :
+                      null
+                    }
+                    {
+                      longSpaces ?
+                      <div className="text-info">{ longSpaces }</div> :
                       null
                     }
                   </div>
                   <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-link" data-bs-dismiss="modal">Close</button>
                     {
-                      name.length < 3 ?
+                      tooShort || tooLong || nonLetters || longSpaces ?
                       <p><button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ createHandler } disabled>Create Members</button></p> :
                       <p><button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ createHandler }>Create Members</button></p>
                     }
@@ -191,11 +258,11 @@ const Members = () => {
                       {/* Button to trigger edit modal */}
                       <button
                         type="button"
-                        className="btn btn-link"
+                        className="btn btn-info"
                         data-bs-toggle="modal"
                         data-bs-target="#updateMemberModal"
                       >
-                        <i className="bi bi-pencil-fill"></i>
+                        Edit
                       </button>
                     </div>
                   </div>
@@ -225,24 +292,49 @@ const Members = () => {
                 <form>
                   <div className="mb-3">
                     <label htmlFor="member-name" className="col-form-label">Member Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="member-name"
-                      onChange={ (e) => setName(e.target.value) }
-                      name="name"
-                      value={ name }
-                    />
+                    <div className="d-flex gap-3 align-items-baseline">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="member-name"
+                        onChange={ (e) => setName(e.target.value) }
+                        name="name"
+                        value={ name }
+                      />
+                      {/* Button to trigger the name validation */}
+                      <button
+                        type="button"
+                        className="btn btn-info"
+                        onClick={ validateName }
+                      >
+                        Validate
+                      </button>
+                    </div>
                     {
-                      name.length < 3 ?
-                      <div className="text-danger">Name must be at least 3 characters long</div> :
+                      tooShort ?
+                      <div className="text-info">{ tooShort }</div> :
+                      null
+                    }
+                    {
+                      tooLong ?
+                      <div className="text-info">{ tooLong }</div> :
+                      null
+                    }
+                    {
+                      nonLetters ?
+                      <div className="text-info">{ nonLetters }</div> :
+                      null
+                    }
+                    {
+                      longSpaces ?
+                      <div className="text-info">{ longSpaces }</div> :
                       null
                     }
                   </div>
                   <div className="d-flex justify-content-end">
                     <button type="button" className="btn btn-link" data-bs-dismiss="modal">Close</button>
                     {
-                      name.length < 3 ?
+                      tooShort || tooLong || nonLetters || longSpaces ?
                       <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ updateHandler } disabled>Update { name }</button> :
                       <button type="submit" className="btn btn-primary" data-bs-dismiss="modal" onClick={ updateHandler }>Update { name }</button>
                     }
