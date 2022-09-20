@@ -51,7 +51,7 @@ const ViewTask = () => {
             <p> <span className="fw-bold">Description:</span> {task.description} </p>
             <p> <span className="fw-bold">Assigned To:</span> {assignedMember.name} </p>
             <p> <span className="fw-bold">State:</span> {task.state} </p>
-            <p> <span className="fw-bold">Due Date:</span> {convertDate(task.dueDate)} </p>
+            <p> <span className="fw-bold">Due Date:</span> {task.dueDate === null ? "TBD" : convertDate(task.dueDate)} </p>
             <div className="d-flex gap-2 justify-content-end">
               <button className="btn btn-link text-secondary" type="button" onClick={ () => navigate("/")}>Cancel</button>
               <button className="btn btn-secondary" type="button" onClick={ () => navigate(`/updatetask/${task._id}`) }>Update</button>
