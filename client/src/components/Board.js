@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import bunPrimary from '../assets/bunPrimary.png';
 
 const Board = (props) => {
@@ -30,14 +30,21 @@ const Board = (props) => {
         .catch(err => console.log(err))
     }, []);
 
-    //UseEffect to filter down the Tasks by Color
+    //UseEffect to filter down the Tasks by Color and member
     useEffect(() => {
-        if (colorFilter === "All") {
-            setTasks(fullTasks)
-        } else if(colorFilter !== "All") {
-            setTasks(fullTasks.filter(tasks => tasks.color === colorFilter))
+        if (colorFilter === "All" && memberFilter === "All") {
+            setTasks(fullTasks);
+        } else if (colorFilter !== "All" && memberFilter !== "All") {
+            setTasks(fullTasks.filter(tasks => tasks.color === colorFilter && tasks.assignedRef._id === memberFilter));
+        } else if (colorFilter !== "All" && memberFilter === "All") {
+            setTasks(fullTasks.filter(tasks => tasks.color === colorFilter));
+        } else if (colorFilter === "All" && memberFilter !== "All") {
+            setTasks(fullTasks.filter(tasks => tasks.assignedRef._id === memberFilter));
+        } else {
+            setTasks([]);
         }
-    }, [fullTasks, colorFilter]);
+    },[fullTasks, colorFilter, memberFilter]);
+
     
     // UseEffect call to get all of the Members from the Server.
     useEffect(() => {
@@ -62,7 +69,7 @@ const Board = (props) => {
                         <div className="row border border-dark rounded shadow mx-1 mb-2 bg-white p-3">
                             <div className="col d-flex align-items-center gap-2">
                                 <div className="col-auto">
-                                    <label className="form-label fw-bold">Filter by Color:</label>
+                                    <label className="fw-bold">Filter by Color:</label>
                                 </div>
                                 <div className="col">
                                     <select className="form-select" onChange = {(e)=>setColorFilter(e.target.value)}>
@@ -78,7 +85,7 @@ const Board = (props) => {
                             </div>
                             <div className="col d-flex align-items-center gap-2">
                                 <div className="col-auto">
-                                    <label className="form-label fw-bold">Filter by Member:</label>
+                                    <label className="fw-bold">Filter by Member:</label>
                                 </div>
                                 <div className="col">
                                     <select className="form-select" onChange = {(e)=>setMemberFilter(e.target.value)}>
