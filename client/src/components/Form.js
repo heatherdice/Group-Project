@@ -161,6 +161,9 @@ const Form = (props) => {
                     );
                   })}
                 </select>
+                {errors.assignedRef && (
+                  <p className="text-danger">Assigned to is required</p>
+                )}
               </div>
           </div>
           <div className="row mt-2">
