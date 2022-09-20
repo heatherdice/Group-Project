@@ -71,9 +71,8 @@ const Members = () => {
     // Delete handler for the view member modal
     const deleteHandler = () => {
       axios
-        .delete(`http://localhost:8000/api/members/${singleMember._id}`)
+        .put(`http://localhost:8000/api/members/${singleMember._id}`, { active: false } )
         .then((res) => {
-          console.log(res);
           console.log(res.data);
           setSingleMember({});
           setName("");
@@ -138,7 +137,7 @@ const Members = () => {
         <div className="row d-flex align-items-baseline mb-3">
           <div className="col-auto fw-bold">Members:</div>
           <div className="col">
-            { members.map((oneMember, index) => {
+            { members.filter(members => members.active === true).map((oneMember, index) => {
               return (
                 // Button trigger view modal
                 <button

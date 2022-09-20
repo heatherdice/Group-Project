@@ -8,6 +8,11 @@ const MemberSchema = new mongoose.Schema(
       minLength: [3, "Name must be at least 3 characters long"],
       maxLength: [255, "Name must be at most 255 characters long"],
       unique: true,
+    },
+    active: {
+      type: Boolean,
+      required: [ true, "Status is required" ],
+      default: true,
     }
   },
   { timestamps: true }
