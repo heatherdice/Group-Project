@@ -158,7 +158,7 @@ const Form = (props) => {
                   onChange={handleChange}
                 >
                   <option value="">Assigned to...</option>
-                  {members.map((oneMember, index) => {
+                  {members.filter(members => members.active === true).map((oneMember, index) => {
                     return(
                       <option key={index} value={oneMember._id}>{oneMember.name}</option>
                     );
