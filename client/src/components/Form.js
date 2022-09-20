@@ -140,6 +140,9 @@ const Form = (props) => {
                   value={task.description}
                   onChange={handleChange}
                 ></textarea>
+                {errors.description && (
+                <p className="text-danger">{errors.description.message}</p>
+                )}
               </div>
           </div>
           <div className="row mt-2">
