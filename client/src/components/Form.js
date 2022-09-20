@@ -64,6 +64,13 @@ const Form = (props) => {
     <div className="row">
       <div className={`col-6 mx-auto border border-dark p-3 rounded shadow ${task.color}`}>
         <form onSubmit={submitHandler}>
+          <div className="row pb-3">
+            {
+              buttonText === "Save & Close" ?
+              <p className="h2">Create Task</p> :
+              <p className="h2">Update {task.name}</p>
+            }
+          </div>
           <div className="row">
             <div className="col-3">
               <label className="form-label">Task Name</label>

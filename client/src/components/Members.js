@@ -201,6 +201,7 @@ const Members = () => {
                         Validate
                       </button>
                     </div>
+                    <div class-Name="form-text">Click validate to check your entry for errors:</div>
                     {
                       tooShort ?
                       <div className="text-info">{ tooShort }</div> :
@@ -309,6 +310,7 @@ const Members = () => {
                         Validate
                       </button>
                     </div>
+                    <div class-Name="form-text">Click validate to check your entry for errors:</div>
                     {
                       tooShort ?
                       <div className="text-info">{ tooShort }</div> :
