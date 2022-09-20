@@ -61,3 +61,29 @@ table tr:last-child td:last-child {
 .Blue{background-color: #1982c4; color: #fff}
 .Purple{background-color: #6a4c93; color: #fff}
 .Orange{background-color: orange}
+
+/* Start of CSS for Pillsbury Doughboy */
+
+/* The animation code */
+@keyframes say-hello {
+    0% { left: -210px; bottom:0px }
+    100% { left: 0px; bottom:0px }
+}
+
+/* The element to apply the animation to */
+#pillsbury-doughboy {
+    position: absolute;
+    left: -210px;
+    bottom: 0px;
+    animation-duration: 1s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+}
+
+/* The style that triggers the animation */
+.animate {
+    animation-name: say-hello;
+}
+
+/* End of CSS for Pillsbury Doughboy */
