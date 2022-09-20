@@ -175,7 +175,9 @@ const Form = (props) => {
                   className="form-control"
                   type="date"
                   name="dueDate"
-                  value={convertDate(task.dueDate)}
+                  value={buttonText === "Save & Update" ?
+                        convertDate(task.dueDate) :
+                        task.dueDate}
                   onChange={handleChange}
                 />
               </div>
