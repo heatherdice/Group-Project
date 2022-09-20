@@ -109,3 +109,4 @@ coverage/
 build/
 .DS_Store
 .env
+.pem
