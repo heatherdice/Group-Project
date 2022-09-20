@@ -54,7 +54,7 @@ const Board = (props) => {
             console.log(res.data);
         })
         .catch(err => console.log(err))
-    }, []);
+    }, [members]);
 
     const createFormHandler = (status) => {
         setButtonState(status);
@@ -90,7 +90,7 @@ const Board = (props) => {
                                 <select className="form-select" onChange = {(e)=>setMemberFilter(e.target.value)}>
                                     <option value="All">All</option>
                                     {
-                                        members.map((oneMember, index) => {
+                                        members.filter(members => members.active === true).map((oneMember, index) => {
                                         return (
                                             <option key={index} value={oneMember._id}>{oneMember.name}</option>
                                         )})
