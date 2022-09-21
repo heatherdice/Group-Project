@@ -109,4 +109,4 @@ coverage/
 build/
 .DS_Store
 .env
-.pem
+coding_dojo_group_project.pem
